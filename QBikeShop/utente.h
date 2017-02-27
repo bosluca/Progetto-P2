@@ -13,17 +13,20 @@ private:
     QString cvc;
     QString intestatario;
 public:
-    datiCarta(QString n, QString c,QString i):numCarta(n),cvc(c),intestatario(i) {}
+    datiCarta(QString n, QString c,QString i):numCarta(n),cvc(c),intestatario(i){}
     static datiCarta* getDati(QXmlStreamReader&); //Lettura da database
-  QString getNumCarta()const;
+
+    QString getNumCarta()const;
     QString getCvc()const;
     QString getIntest()const;
 
     void setNumC(const QString& n);
     void setCvc(const QString& c);
     void setIntest(const QString& i);
+};
 
+class utente{
 
-
+};
 
 #endif // UTENTE_H
