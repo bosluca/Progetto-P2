@@ -4,6 +4,7 @@
 #include<QDate>
 #include<list>
 #include<QXmlStreamWriter>
+#include<QCryptographicHash>
 
 
 class datiCarta
@@ -44,10 +45,13 @@ class utente{
     username usUname;
     list<articolo>Acquistati;
 public:
-    utente(QString n,QString c,QString i,QString psw, QString d,datiCarta* cc,username u,list<articolo>acq);
+    utente(QString n,QString c,QString i,QString psw, QDate d,datiCarta* cc,username u,list<articolo>acq);
+    virtua ~utente();
     void modificaInfo(const QString& n,const QString& c, const QString& i,const QString& pw, const QDate& dn,
                       const QString& nc,const QString& cv,const QString& Inte);
 
+
+        //LETTURA
     QString getNome()const;
     QString getCognome()const;
     QString getIndirizzo()const;
@@ -58,6 +62,19 @@ public:
     QString getCvc()const;
     QString getIntest()const;
     QString getUsUname()const;
+    list<articolo> getAcquistati()const;
+
+        //SCRITTURA
+    void setNome(const QString& n);
+    void setCognome(const QString& c);
+    void setIndirizzo(const QString& i);
+    void setPassword(const QString& pw);
+    void setDataNascita(const QString& dn);
+    void setNumCarta(const QString& nc);
+    void setCvc(const QString& cv);
+    void setIntestatario(const QString& in);
+    void setAcquistati(list<articolo>acq);
+
 
     virtual QString classeUtente()const=0;
     virtual QString stampaClasseUtente()const=0;
