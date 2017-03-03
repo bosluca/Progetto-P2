@@ -35,6 +35,35 @@ public:
 
 class utente{
  private:
+    QString nome;
+    QString cognome;
+    QString indirizzo;
+    QString password;
+    QDate dataNascita;
+    datiCarta* cartaDiCredito;
+    username usUname;
+    list<articolo>Acquistati;
+public:
+    utente(QString n,QString c,QString i,QString psw, QString d,datiCarta* cc,username u,list<articolo>acq);
+    void modificaInfo(const QString& n,const QString& c, const QString& i,const QString& pw, const QDate& dn,
+                      const QString& nc,const QString& cv,const QString& Inte);
+
+    QString getNome()const;
+    QString getCognome()const;
+    QString getIndirizzo()const;
+    QString getPassword()const;
+    QDate getDataNascita()const;
+    QString getStrData()const;
+    QString getNumCarta()const;
+    QString getCvc()const;
+    QString getIntest()const;
+    QString getUsUname()const;
+
+    virtual QString classeUtente()const=0;
+    virtual QString stampaClasseUtente()const=0;
+    virtual void regClasse(QXmlStreamWriter& xmlWriter)const=0;
+    virtual bool ricercaArticolo(const articolo* art,const QString& ricerca)const=0;
+
 };
 
 #endif // UTENTE_H
