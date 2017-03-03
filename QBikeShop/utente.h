@@ -25,8 +25,16 @@ public:
     void setIntest(const QString& i);
 };
 
-class utente{
+class username{
+private:
+    const QString uname;
+public:
+    username(QString a):uname(a){}
+    const QString& getUser()const{return uname;}
+};
 
+class utente{
+ private:
 };
 
 #endif // UTENTE_H
