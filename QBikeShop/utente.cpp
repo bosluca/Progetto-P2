@@ -40,5 +40,33 @@ QString utente::getNumCarta()const{return cartaDiCredito->getNumCarta();}
 QString utente::getCvc()const{return cartaDiCredito->getCvc();}
 QString utente::getIntest()const{return cartaDiCredito->getIntest();}
 QString utente::getUsUname()const{return usUname.getUser();}
-list<articolo> utente::getAcquistati()const{return Acquistati;}
+std::list<articolo> utente::getAcquistati()const{return Acquistati;}
+
+void utente::setNome(const QString &n){nome=n;}
+void utente::setCognome(const QString &c){cognome=c;}
+void utente::setIndirizzo(const QString &i){indirizzo=i;}
+void utente::setPassword(const QString &pw){password=pw;}
+void utente::setDataNascita(const QDate &dn){dataNascita=dn;}
+void utente::setNumCarta(const QString &nc){cartaDiCredito->setNumC(nc);}
+void utente::setCvc(const QString &cv){cartaDiCredito->setCvc(cv);}
+void utente::setIntestatario(const QString &in){cartaDiCredito->setIntest(in);}
+void utente::setAcquistati(articolo* art){
+    Acquistati.push_back(art);
+}
+
+virtual utente::~utente(){delete &cartaDiCredito;}
+
+
+void utente::modificaInfo(const QString &n, const QString &c, const QString &i, const QString &pw, const QDate &dn, const QString &nc,
+                          const QString &cv, const QString &Inte){
+    setNome(n);
+    setCognome(c);
+    setIndirizzo(i);
+    setPassword(pw);
+    setDataNascita(dn);
+    cartaDiCredito->setNumC(nc);
+    cartaDiCredito->setCvc(cv);
+    cartaDiCredito->setIntest(Inte);
+}
+
 

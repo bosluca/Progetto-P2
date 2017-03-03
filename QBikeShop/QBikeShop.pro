@@ -5,10 +5,12 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    utente.cpp
+    utente.cpp \
+    articolo.cpp
 
 HEADERS += \
-    utente.h
+    utente.h \
+    articolo.h
 CONFIG += qt
 
 QT += svg
