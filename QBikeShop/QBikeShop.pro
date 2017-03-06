@@ -6,11 +6,15 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     utente.cpp \
-    articolo.cpp
+    articolo.cpp \
+    base.cpp \
+    premium.cpp
 
 HEADERS += \
     utente.h \
-    articolo.h
+    articolo.h \
+    base.h \
+    premium.h
 CONFIG += qt
 
 QT += svg

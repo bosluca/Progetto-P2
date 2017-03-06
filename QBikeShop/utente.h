@@ -5,7 +5,7 @@
 //#include<list>
 #include<QXmlStreamWriter>
 #include<QCryptographicHash>
-
+#include<articolo.h>
 
 class datiCarta
 {
@@ -46,7 +46,7 @@ class utente{
     std::list<articolo>Acquistati;
 public:
     utente(QString n,QString c,QString i,QString psw, QDate d,datiCarta* cc,username u,std::list<articolo>acq);
-    virtua ~utente();
+    virtual ~utente();
     void modificaInfo(const QString& n,const QString& c, const QString& i,const QString& pw, const QDate& dn,
                       const QString& nc,const QString& cv,const QString& Inte);
 
