@@ -62,6 +62,8 @@ public:
     QString getCvc()const;
     QString getIntest()const;
     QString getUsUname()const;
+    username getUsername()const;
+    datiCarta* getCarta()const;
     std::list<articolo> getAcquistati()const;
 
         //SCRITTURA
