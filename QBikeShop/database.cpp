@@ -71,7 +71,47 @@ void utentiDatabase::Load(){
             if(xmlReader.name()=="utentiDatabase"){
                 xmlReader.readNext();
             }
+            else if(xmlReader.name()=="utente")
+                xmlReader.readNext();
+            else if(xmlReader.name()=="username"){
+                Username=xmlReader.readElementText(); //compilo l'username
+                u=new username(Username);
+            }
+            else if(xmlReader.name()=="classe")
+                classeU=xmlReader.readElementText();
+            else if(xmlReader.name()=="dati"){
+                while (!xmlReader.isEndElement()||!(xmlReader.name()=="dati")){
+                    if(xmlReader.isStartElement()){
+                        if(xmlReader.name()=="nome")
+                            n=xmlReader.readElementText();
+                        else if(xmlReader.name()=="cognome")
+                            c=xmlReader.readElementText();
+                        else if(xmlReader.name()=="indirizzo")
+                            i=xmlReader.readElementText();
+                        else if(xmlReader.name()=="password")
+                            psw=xmlReader.readElementText();
+                        else if(xmlReader.name()=="datanascita")
+                            dataN=xmlReader.readElementText();
+                }
+                xmlReader.readNext();
+            }
         }
+        else if(xmlReader.name()=="acquisti"){
+                while(!xmlReader.isEndElement() || !(xmlReader.name()=="acquisti")){
+                    if(xmlReader.isStartElement()){
+                        if(xmlReader.name()=="idart")
+                            idAr=xmlReader.readElementText();
+                        else if(xmlReader.name()=="nomeart")
+                            na=xmlReader.readElementText();
+                        else if(xmlReader.name()=="prezzo")
+                            prz=xmlReader.readElementText().toInt();
+                        else if(xmlReader.name()=="premium"){
+
+                        }
+                    }
+                }
+            }
+
     }
 
 }
