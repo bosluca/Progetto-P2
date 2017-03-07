@@ -40,6 +40,8 @@ QString utente::getNumCarta()const{return cartaDiCredito->getNumCarta();}
 QString utente::getCvc()const{return cartaDiCredito->getCvc();}
 QString utente::getIntest()const{return cartaDiCredito->getIntest();}
 QString utente::getUsUname()const{return usUname.getUser();}
+username utente::getUsername()const{return usUname;}
+datiCarta* utente::getCarta() const{return cartaDiCredito;}
 std::list<articolo> utente::getAcquistati()const{return Acquistati;}
 
 void utente::setNome(const QString &n){nome=n;}
