@@ -106,12 +106,36 @@ void utentiDatabase::Load(){
                         else if(xmlReader.name()=="prezzo")
                             prz=xmlReader.readElementText().toInt();
                         else if(xmlReader.name()=="premium"){
-
+                            QString premUs=xmlReader.readElementText();
+                            if(premUs=="true")
+                                prem=true;
+                            else if(premUs=="false")
+                                prem=false;
+                            articolo* tmp=new articolo(idAr,na,0,prz,0,prem);
+                            acq.push_front(tmp);
                         }
                     }
+                    xmlReader.readNext();
                 }
             }
+            else if(xmlReader.name()=="carta")
+                dc=datiCarta::getDati(xmlReader);
 
+    }else{
+            QDate DataN(QDate::fromString(dataN,"dd.MM.yyyy"));
+            if(xmlReader.isEndElement()&&xmlReader.name()=="utente"){
+                if(classeU=="base"){
+                    base* bas=new base(n,c,i,psw,dataN,dc,u,acq);
+                    userDB.AggUtente(bas);
+                    acq=std::list<articolo>();
+                }else if(classeU=="premium"){
+                    premium* pre=new premium(n,c,i,psw,dataN,dc,u,acq);
+                }
+                xmlReader.readNext();
+            }
+            else
+                xmlReader.readNext();
+        }
     }
-
+    qfile.close();
 }
