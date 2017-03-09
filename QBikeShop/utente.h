@@ -6,6 +6,7 @@
 #include<QXmlStreamWriter>
 #include<QCryptographicHash>
 #include<articolo.h>
+using std::list;
 
 class datiCarta
 {
@@ -43,7 +44,7 @@ class utente{
     QDate dataNascita;
     datiCarta* cartaDiCredito;
     username usUname;
-    std::list<articolo>Acquistati;
+    list<articolo>Acquistati;
 public:
     utente(QString n,QString c,QString i,QString psw, QDate d,datiCarta* cc,username u,std::list<articolo>acq);
     virtual ~utente();
@@ -64,7 +65,7 @@ public:
     QString getUsUname()const;
     username getUsername()const;
     datiCarta* getCarta()const;
-    std::list<articolo> getAcquistati()const;
+    list<articolo*> getAcquistati()const;
 
         //SCRITTURA
     void setNome(const QString& n);

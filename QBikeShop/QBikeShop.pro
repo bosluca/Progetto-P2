@@ -9,16 +9,16 @@ SOURCES += main.cpp \
     articolo.cpp \
     base.cpp \
     premium.cpp \
-    database.cpp \
-    contenitore.cpp
+    contenitore.cpp \
+    database.cpp
 
 HEADERS += \
     utente.h \
     articolo.h \
     base.h \
     premium.h \
-    database.h \
-    contenitore.h
+    contenitore.h \
+    database.h
 CONFIG += qt
 
 QT += svg

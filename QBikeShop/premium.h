@@ -3,7 +3,7 @@
 #include "utente.h"
 class premium:public utente{
 public:
-    premium(QString n,QString c,QString i,QString psw, QDate d,datiCarta* cc,username u,std::list<articolo>acq):utente(n,c,i,psw,d,cc,u,acq){}
+    premium(QString n,QString c,QString i,QString psw, QDate d,datiCarta* cc,username u,list<articolo>acq):utente(n,c,i,psw,d,cc,u,acq){}
     virtual QString classeUtente()const;
     virtual QString stampaClasseUtente()const;
     virtual void regClasse(QXmlStreamWriter& xmlWriter)const;

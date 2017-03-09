@@ -4,7 +4,7 @@
 
 class base:public utente{
 public:
-    base(QString n,QString c,QString i,QString psw, QDate d,datiCarta* cc,username u,std::list<articolo>acq):utente(n,c,i,psw,d,cc,u,acq){}
+    base(QString n,QString c,QString i,QString psw, QDate d,datiCarta* cc,username u,list<articolo>acq):utente(n,c,i,psw,d,cc,u,acq){}
     virtual QString classeUtente()const;
     virtual QString stampaClasseUtente()const;
     virtual void regClasse(QXmlStreamWriter& xmlWriter)const;

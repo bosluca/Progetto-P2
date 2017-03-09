@@ -1,70 +1,64 @@
 #ifndef DATABASE_H
 #define DATABASE_H
-#include"utente.h"
-#include"base.h"
-#include"premium.h"
-#include"articolo.h"
-#include<QXmlStreamReader>
-#include<QXmlStreamWriter>
+#include "utente.h"
+#include "articolo.h"
+#include "base.h"
+#include "premium.h"
+#include "contenitore.h"
+#include<iostream>
+#include<typeinfo>
 #include<QFile>
-#include<list>
+#include<QXmlStreamWriter>
+#include<QXmlStreamReader>
 #include<QString>
-#include"contenitore.h" //da fare
+using std::list;
 
-class utentiDatabase{
+class utentidatabase{
+private:
     static QString fileUser;
-    contenitore<utente> userDB;
+    contenitore usDB;
 public:
-    utentiDatabase();
-    ~utentiDatabase();
+    utentidatabase();
+    ~utentidatabase();
 
-    contenitore<utente>::iteratore begin();
-    contenitore<utente>::iteratore end();
+    contenitore::iteratore begin();
+    contenitore::iteratore end();
 
-    void aggUtente(const QString& n, const QString& c,const QString& i,const QString& pw, const QDate& dn,const QString& nc,
-                   const QString& cv,const QString& Inte);
-
-    utente* findUser(const QString& uname)const;
-    bool matchUtente(const QString& uname)const;
-    bool empty()const;
-    void remUtente(const QString& uname);
-    void upgradeToPrem(const QString& usr);
-    void downgradeToBase(const QString& usr);
-    void rimuovi(const QString& usr);
-    void modificaProfiloUtente(const QString& n, const QString& c,const QString& i,const QString& pw, const QDate& dn,const QString& nc,
-                               const QString& cv,const QString& Inte);
+    void addUtente(const QString &n, const QString &c, const QString &i, const QString &pw, const QDate &dn, const QString& uname, const QString &nc,
+                   const QString &cv, const QString &Inte);
+    utente* trovaUtente(const QString& uname)const;
+    bool trovaEsistente(const QString& uname)const;
+    bool vuoto()const;
+    void rimuoviUtente(const QString& uname);
+    void upgrade(const QString& uname);
+    void downgrade(const QString& uname);
+    void togli(const QString& uname);
+    void modProfilo(const QString &n, const QString &c, const QString &i, const QString &pw, const QDate &dn, const QString &nc,
+                    const QString &cv, const QString &Inte);
     void Load();
     void Close();
 };
 
-class articoliDatabase{
+class articolidatabase{
 private:
-    static QString fileArt;
-    std::list<articolo*> articDB;
+    static QString fileArticoli;
+    list<articolo*>articDB;
 public:
-    articoliDatabase();
-    ~articoliDatabase();
+    articolidatabase();
+    ~articolidatabase();
 
-    std::list<articolo*>::iterator begin();
-    std::list<articolo*>::iterator end();
-    std::list<articolo*>::const_iterator begin()const;
-    std::list<articolo*>::const_iterator end()const;
+    list<QString>leggiAcquistati(QXmlStreamReader& xmlReader);
+    list<articolo*>getDatabaseA(){return articDB;}
 
-    QString getNameById(const QString&)const;
-
-    std::list<QString> leggiAcquistati(QXmlStreamReader& xmlReader);
-    std::list<articolo*> getAcqDB(){return articDB;}
-
-    bool trovaID(const QString& id)const;
-    bool isEmpty()const;
-    void rimArticolo(const QString& idA);
-    void insertArt(const QString& id, const QString& n,const QString& d,const double p,const int q,const bool pr);
+    QString getNomeById(const QString& idArt); //dynamic cast
+    bool trovaId(const QString& idA)const;
+    bool vuoto()const;
+    void togliArtiolo(const QString& idA);
+    void inserisciArticolo(const QString& id,const QString& nome,const QString& desc,const QString& prezzo,const QString& qta, const bool& prem);
     void acquista(const QString& idA);
-    void setAcquistati(const QString& idA);
-
+    void setAcq(const QString& idA);
     void Load();
     void Close();
-
 };
 
 #endif // DATABASE_H
